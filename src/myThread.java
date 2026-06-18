@@ -4,20 +4,24 @@ public class myThread extends Thread {
     }
     @Override
     public void run() {
-        System.out.println("THREAD IS RUNNING");
-        for(int i=1 ;i<=5 ;i++){
-                 System.out.println( Thread.currentThread().getName() +"  is running ");
-//                    Thread.yield();
+
+         while(true){
+            System.out.println(Thread.currentThread().getName()+"THREAD IS RUNNING");
         }
 
     }
 
     static void main(String[] args) throws InterruptedException {
 
-      myThread t1=new myThread( "t1" );
-      myThread t2=new myThread( "t2");
-        t1.start();
+      myThread  myThread=new myThread( " demon thread" );
+      myThread.setDaemon(true);
+        myThread.start();
+
+        myThread t2=new myThread( "t2");
         t2.start();
+
+
+        System.out.println("main done");
 
     }
 }
