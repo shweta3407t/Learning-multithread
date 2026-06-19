@@ -22,8 +22,9 @@ public class BankAccountLock {
                      System.out.println(Thread.currentThread().getName() + " COMPLETE WITHDRAWAL .REMAINING BALANCE  " + balance);
                      System.out.println();
                  } catch (Exception e) {
-                     throw new RuntimeException(e);
-                 }finally {
+                     Thread.currentThread().interrupt();
+
+                  }finally {
                      lock.unlock();
                  }
 
